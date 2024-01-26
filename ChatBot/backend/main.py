@@ -29,17 +29,21 @@ app.add_middleware(
 )
 
 
-def get_embedding(text, model="text-embedding-ada-002"):
+# text-embedding-ada-002
+# text-embedding-3-small
+def get_embedding(text, model="text-embedding-3-small"):
     text = text.replace("\n", " ")
     return client.embeddings.create(input=[text], model=model).data[0].embedding
 
 
 def create_context(question, df, max_len=3000):
     q_embedding = (
-        client.embeddings.create(input=question, model="text-embedding-ada-002")
+        client.embeddings.create(input=question, model="text-embedding-3-small")
         .data[0]
         .embedding
     )
+    # df[embedding2]
+    # df[embedding]
     df["distances"] = df["embedding"].apply(lambda x: cosine(q_embedding, x))
     cur_len = 0
     context_parts = []
@@ -62,7 +66,7 @@ def answer_question(question, df, max_len=3000, debug=False):
             messages=[
                 {
                     "role": "system",
-                    "content": "Answer the question based on the context below, try to explain anyway but if the question can't be answered based on the context, say \"I don't know\"\n\n",
+                    "content": "Answer the question in Korean based on the context below, try to explain anyway but if the question can't be answered based on the context, say \"I don't know\"\n\n",
                 },
                 {
                     "role": "user",
@@ -80,16 +84,18 @@ def answer_question(question, df, max_len=3000, debug=False):
 # 아래 함수가 핵심이다. 나머지 함수는 보조 목적으로 사용하는 함수다.
 
 
+# job-processed2.pkl
+# job-processed.pkl
 @app.post("/chat")
 async def chat(input_data: ChatInput):
     user_input = input_data.user_input
-    df = pd.read_pickle("../data/processed/react-processed.pkl")
+    df = pd.read_pickle("../../OpenAI_QA/process/job-processed.pkl")
 
     if user_input is None:
         return {"message": "입력된 메시지가 없습니다."}
 
     response = answer_question(user_input, df, debug=True)
-    return {"User": user_input, "도봉이": response}
+    return {"User": user_input, "세비": response}
 
 
 # Run the server

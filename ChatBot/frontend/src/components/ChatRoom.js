@@ -32,22 +32,19 @@ const ChatRoom = () => {
 
       const responseData = await response.json();
       console.log(responseData);
-      setChatHistory((prevHistory) => [
-        ...prevHistory,
-        { sender: "도봉이", message: responseData.도봉이 },
-      ]);
+      setChatHistory((prevHistory) => [...prevHistory, { sender: "세비", message: responseData.세비 }]);
     } catch (error) {
       console.error("Error sending message:", error);
     }
     console.log(chatHistory);
 
     // Clear input field
-    setUserInput("");
+    setUserInput({ userInput: "" });
   };
 
   return (
     <section className=" flex flex-col">
-      <h1 className="text-center text-3xl font-bold mb-4">도봉이와의 대화방</h1>
+      <h1 className="text-center text-3xl font-bold mb-4">세비와의 대화방</h1>
       <div className="w-full mx-auto my-4 max-w-2xl flex flex-row">
         <div className="w-full mx-auto max-w-3xl h-[80vh] pt-2 flex flex-row">
           <NavBar />
@@ -55,12 +52,7 @@ const ChatRoom = () => {
             <div className="h-[70%] w-full border border-gray-300 mb-4 p-2 overflow-y-scroll">
               {/* Display chat history */}
               {chatHistory.map((chat, index) => (
-                <div
-                  key={index}
-                  className={`message ${
-                    chat.sender === "User" ? "user" : "도봉이"
-                  }`}
-                >
+                <div key={index} className={`message ${chat.sender === "User" ? "user" : "세비"}`}>
                   <p>
                     <strong>{chat.sender}:</strong> {chat.message}
                   </p>
@@ -74,7 +66,7 @@ const ChatRoom = () => {
                 onChange={handleInputChange}
                 className="w-4/5 p-2"
                 placeholder="메세지를 입력하세요."
-                onKeyPress={(e) => e.key === "Enter" && sendMessage()}
+                onKeyDown={(e) => e.key === "Enter" && sendMessage()}
               />
               <button
                 onClick={sendMessage}

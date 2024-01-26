@@ -7,35 +7,23 @@ const Header = () => {
       <nav className="bg-gray-800 text-center">
         <ul className="list-none m-0 p-0 overflow-hidden">
           <li className="inline-block p-2 w-1/5">
-            <a
-              href="/"
-              className="text-white no-underline block hover:bg-gray-900"
-            >
+            <a href="/" className="text-white no-underline block hover:bg-gray-900">
               홈
             </a>
           </li>
           <li className="inline-block p-2 w-1/5">
-            <a
-              href="news"
-              className="text-white no-underline block hover:bg-gray-900"
-            >
-              도봉이 근황 보기
+            <a href="news" className="text-white no-underline block hover:bg-gray-900">
+              세비 근황 보기
             </a>
           </li>
           <li className="inline-block p-2 w-1/5">
-            <a
-              href="contact"
-              className="text-white no-underline block hover:bg-gray-900"
-            >
-              도봉이 만든 사람 소개
+            <a href="contact" className="text-white no-underline block hover:bg-gray-900">
+              세비 만든 사람 소개
             </a>
           </li>
           <li className="inline-block p-2 w-1/5">
-            <a
-              href="about"
-              className="text-white no-underline block hover:bg-gray-900"
-            >
-              도봉이는...
+            <a href="about" className="text-white no-underline block hover:bg-gray-900">
+              세비는...
             </a>
           </li>
         </ul>
