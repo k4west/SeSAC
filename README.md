@@ -13,7 +13,8 @@ period_keys = ('publishedAt', 'closedAt')
 positions = []
 companies = []
 position_keys = ('jobCategories_id', 'jobCategories', 'techStacks', 'responsibility', 'qualifications', 'preferredRequirements')
-company_keys = ('companyProfileId', 'companyName', 'serviceInfo', 'companyUrl', 'address')
+company_keys = ('companyProfileId', 'companyName', 'serviceInfo', '''companyUrl', 'address')
+company_keys = ('companyProfileId', 'companyName', 'serviceInfo', 'welfares', 'companyUrl', 'address')
 
 visited_companies = set()
 
