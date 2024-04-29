@@ -49,7 +49,7 @@ const ChatRoom = () => {
         <div className="w-full mx-auto max-w-3xl h-[80vh] pt-2 flex flex-row">
           <NavBar />
           <div className="w-full">
-            <div className="h-[70%] w-full border border-gray-300 mb-4 p-2 overflow-y-scroll">
+            <div className="h-[70%] w-full border border-gray-300 mb-4 p-2 overflow-y-scroll bg-[url('https://picsum.photos/id/37/400/500')]">
               {/* Display chat history */}
               {chatHistory.map((chat, index) => (
                 <div key={index} className={`message ${chat.sender === "User" ? "user" : "세비"}`}>

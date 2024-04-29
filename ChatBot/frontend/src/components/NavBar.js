@@ -1,6 +1,6 @@
 const NavBar = () => {
   return (
-    <aside className="sticky top-12 h-1/3 w-1/3 border border-gray-300 p-2.5">
+    <aside className="sticky top-12 h-1/3 w-1/3 border border-gray-300 p-2.5 bg-[url('https://picsum.photos/id/32/200/300')]">
       <h1 className="text-center border-b border-gray-300 font-extrabold">세비 친구들</h1>
       <ul className="list-none text-center">
         <li>

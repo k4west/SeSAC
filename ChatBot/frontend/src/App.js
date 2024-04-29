@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <main className="mt-20 mb-32">
+      <main className="mt-20 mb-32 bg-[url('https://picsum.photos/200?random=1')]">
         <Outlet />
       </main>
       <Footer />
